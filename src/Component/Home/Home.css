@@ -1,0 +1,53 @@
+#home{
+    background-color: rgb(220, 236, 245);
+    padding: 5% 6%;
+}
+
+.home-text{
+    border: 5px  dashed black;
+    border-right: none;
+    border-bottom: none;
+}
+.text{
+    border-bottom: 5px dashed black;
+    position: absolute;
+    right: 30%;
+    left: 0;
+    padding: 6% 5%;
+    border-left:  5px  dashed black;
+}
+/* .home-text::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50%;
+    border-bottom: 5px dashed black;
+} */
+.home-text h5{
+    color: rgb(12, 88, 12);
+}
+.home-text h3{
+    font-size: 50px;
+}
+.chart-card:hover {
+    transform: translateY(-10px);
+  }
+  .slide-up {
+    overflow: hidden;
+  }
+  
+  .slide-up {
+    animation: 1.5s slide-up;
+    margin-top: 0%;
+  }
+
+  @keyframes slide-up {
+    from {
+      margin-top: 20%;
+    }
+  
+    to {
+      margin-top: 0%;
+    }
+  }

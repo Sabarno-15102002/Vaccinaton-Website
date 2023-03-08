@@ -1,0 +1,17 @@
+#about{
+    text-align: center;
+    font-family: "Varela Round", sans-serif;
+    padding: 4% 10%;
+    /* box-shadow: 0 0 200px rgba(0,0,0,0.1) inset; */
+} 
+.black{
+    border: 1.5px solid black;
+    width: 10%;
+    margin: 2px auto;
+    background-color: black;
+}
+#about p{
+    margin: 25px auto;
+    text-align: left;
+    /* font-size: 15px; */
+}
