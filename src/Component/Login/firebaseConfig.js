@@ -7,13 +7,7 @@ import { getAnalytics } from "firebase/analytics";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyA9_2iZ192NdbsvYFOrKydmv-wZke2TVck",
-    authDomain: "vaccination-website-28ba1.firebaseapp.com",
-    projectId: "vaccination-website-28ba1",
-    storageBucket: "vaccination-website-28ba1.appspot.com",
-    messagingSenderId: "390034218756",
-    appId: "1:390034218756:web:9513a91f97d4b290097a51",
-    measurementId: "G-ZJNB80L7XF"
+    //your Own details
 };
 
 // Initialize Firebase
