@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import Login from "../Login/Login";
+import { getAuth, signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 // import Swal from "sweetalert2";
 function Navbar() {
   // const handleLogOut = () => {
@@ -19,7 +22,7 @@ function Navbar() {
   //       },
   //       buttonsStyling: false
   //     })
-      
+
   //     swalWithBootstrapButtons.fire({
   //       title: 'Are you sure?',
   //       text: "Do you really want to sign out? ",
@@ -53,10 +56,29 @@ function Navbar() {
   //     })
   //   }
   // }
+  const authenticated = localStorage.getItem('authenticated');
+  const [authenticate, setAuthenticate] = useState(authenticated);
+  const navigate = useNavigate();
+  const handleLogin = () => {
+    Login();
+  }
+
+  const handleLogOut = () => {
+    const auth = getAuth();
+    signOut(auth)
+      .then((response) => {
+        console.log(response);
+        setAuthenticate(false);
+        localStorage.setItem('authenticated', false);
+      })
+      .catch((err) => {
+        alert(err.message);
+      })
+  }
   return (
     <nav class="navbar navbarHeight navbar-expand-lg navbar-light bg-light navbar-adjust-custom">
       <a className="navbar-brand" href="/">
-        <img src="images/icon.png" alt="icon" className="icon"/>
+        <img src="images/icon.png" alt="icon" className="icon" />
         <span className="iconText">Vaccine</span>
       </a>
       <button
@@ -89,7 +111,7 @@ function Navbar() {
             </a>
           </li>
           <li class="nav-item dropdown">
-            <a
+            {!authenticate && <a
               class="nav-link dropdown-toggle"
               href="#"
               id="navbarDropdown"
@@ -97,26 +119,41 @@ function Navbar() {
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-            >
-              Login
-            </a>
+            > Sign In
+            </a>}
+
+            {authenticate && < a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            > Sign Out
+            </a>}
             <div
               className="dropdown-menu dropdown-menu-right dp-button"
               aria-labelledby="navbarDropdown"
             >
-              <a className="dropdown-item"
-              //  onClick={handleLogOut}
+              {!authenticate && <a className="dropdown-item" href="/login"
+                onClick={handleLogin}
+              >
+                Login
+              </a>}
+              {authenticate && <a className="dropdown-item"
+                onClick={handleLogOut}
               >
                 Logout
-              </a>
+              </a>}
               <div className="dropdown-divider"></div>
               <a class="dropdown-item" href="/learnmore">
                 More
               </a>
               <div className="dropdown-divider"></div>
-              {localStorage.getItem("token")?<a class="dropdown-item" href="/account">
+              {localStorage.getItem("token") ? <a class="dropdown-item" href="/account">
                 View Account
-              </a>:null}
+              </a> : null}
             </div>
           </li>
         </ul>
