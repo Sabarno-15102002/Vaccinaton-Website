@@ -6,6 +6,9 @@ import Home from "./Component/Home/Home";
 import Navbar from "./Component/Navbar/Navbar";
 import Contact from "./Component/Contact/Contact";
 import Login from "./Component/Login/Login";
+import Infant from "./Component/Infant/Infant";
+import Toodlers from "./Component/Infant/Toodlers";
+import School from "./Component/Infant/School";
 function App() {
   function HomePage()
   {
@@ -22,6 +25,9 @@ function App() {
       <Routes>
       <Route path="/" element={<HomePage/>} />
         <Route path="/login" element={<Login/>} />
+        <Route path="/infant" element={<Infant/>} />
+        <Route path="/toodlers" element={<Toodlers/>} />
+        <Route path="/School going kids" element={<School/>} />
       </Routes>
     </Router>
   );

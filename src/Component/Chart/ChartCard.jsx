@@ -6,7 +6,7 @@ export default function ChartCard(props)
             <div className="chart-card slide-up">
                 <h3>{props.heading}</h3>
                 <p>{props.about}</p>
-                <a href="/">Learn More</a>
+                <a href={"/"+props.heading}>Learn More</a>
             </div>
     </div>
 }

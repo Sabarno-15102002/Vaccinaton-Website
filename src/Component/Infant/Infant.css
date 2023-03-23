@@ -1,0 +1,63 @@
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+  }
+  
+  .sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+  }
+   
+  .sidebar a.active {
+    background-color: #0481aa;
+    color: white;
+  }
+  
+  .sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  }
+  
+  div.content {
+    margin-left: 200px;
+    padding: 5%;
+  }
+  div .content img{
+    height: 350px;
+  }
+  .vaccine{
+    margin-left: 200px;
+    padding: 2% 6%;
+  }
+  .vaccine h1{
+    color: #ff4500;
+    font-size: 30px;
+  }
+  .vaccine strong{
+    margin-right: 8px;
+    margin-left: 25px;
+    color: #0b1d83;
+  }
+  @media screen and (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar a {float: left;}
+    div.content {margin-left: 0;}
+  }
+  
+  @media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+  }
