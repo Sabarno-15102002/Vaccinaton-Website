@@ -58,6 +58,7 @@ function Navbar() {
   // }
   const authenticated = localStorage.getItem('authenticated');
   const [authenticate, setAuthenticate] = useState(authenticated);
+  console.log(authenticate);
   const navigate = useNavigate();
   const handleLogin = () => {
     Login();
@@ -70,6 +71,7 @@ function Navbar() {
         console.log(response);
         setAuthenticate(false);
         localStorage.setItem('authenticated', false);
+        console.log(localStorage.getItem('authenticated'));
       })
       .catch((err) => {
         alert(err.message);
@@ -111,7 +113,7 @@ function Navbar() {
             </a>
           </li>
           <li class="nav-item dropdown">
-            {!authenticate && <a
+            {authenticated !== "true" ? <a
               class="nav-link dropdown-toggle"
               href="#"
               id="navbarDropdown"
@@ -120,9 +122,7 @@ function Navbar() {
               aria-haspopup="true"
               aria-expanded="false"
             > Sign In
-            </a>}
-
-            {authenticate && < a
+            </a> : < a
               class="nav-link dropdown-toggle"
               href="#"
               id="navbarDropdown"
@@ -132,16 +132,26 @@ function Navbar() {
               aria-expanded="false"
             > Sign Out
             </a>}
+
+            {/* {authenticated !== "false" && < a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            > Sign Out
+            </a>} */}
             <div
               className="dropdown-menu dropdown-menu-right dp-button"
               aria-labelledby="navbarDropdown"
             >
-              {!authenticate && <a className="dropdown-item" href="/login"
+              {authenticated !== "true" ? <a className="dropdown-item" href="/login"
                 onClick={handleLogin}
               >
                 Login
-              </a>}
-              {authenticate && <a className="dropdown-item"
+              </a> : <a className="dropdown-item"
                 onClick={handleLogOut}
               >
                 Logout
@@ -151,7 +161,7 @@ function Navbar() {
                 More
               </a>
               <div className="dropdown-divider"></div>
-              {localStorage.getItem("token") ? <a class="dropdown-item" href="/account">
+              {authenticated !== "false" ? <a class="dropdown-item" href="/account">
                 View Account
               </a> : null}
             </div>
