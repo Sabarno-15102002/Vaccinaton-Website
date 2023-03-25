@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Login from "../Login/Login";
 import { getAuth, signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-// import Swal from "sweetalert2";
+import { redirect, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 function Navbar() {
   // const handleLogOut = () => {
   //   if(localStorage.getItem("token")===null)
@@ -72,6 +72,30 @@ function Navbar() {
         setAuthenticate(false);
         localStorage.setItem('authenticated', false);
         console.log(localStorage.getItem('authenticated'));
+        // location.reload();
+        let timerInterval
+        Swal.fire({
+          // title: 'Auto close alert!',
+          title: 'Succesfully Logging out',
+          timer: 2000,
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading()
+            const b = Swal.getHtmlContainer().querySelector('b')
+            timerInterval = setInterval(() => {
+              b.textContent = Swal.getTimerLeft()
+            }, 100)
+          },
+          willClose: () => {
+            clearInterval(timerInterval)
+          }
+        }).then((result) => {
+          /* Read more about handling dismissals below */
+          if (result.dismiss === Swal.DismissReason.timer) {
+            console.log('Succesfully Logged out');
+            window.location.reload();
+          }
+        })
       })
       .catch((err) => {
         alert(err.message);
@@ -132,17 +156,6 @@ function Navbar() {
               aria-expanded="false"
             > Sign Out
             </a>}
-
-            {/* {authenticated !== "false" && < a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            > Sign Out
-            </a>} */}
             <div
               className="dropdown-menu dropdown-menu-right dp-button"
               aria-labelledby="navbarDropdown"
