@@ -9,6 +9,7 @@ import Login from "./Component/Login/Login";
 import Infant from "./Component/Infant/Infant";
 import Toodlers from "./Component/Infant/Toodlers";
 import School from "./Component/Infant/School";
+import Account from "./Component/Account/Account";
 function App() {
   function HomePage()
   {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/infant" element={<Infant/>} />
         <Route path="/toodlers" element={<Toodlers/>} />
         <Route path="/School going kids" element={<School/>} />
+        <Route path="/account" element={<Account/>} />
       </Routes>
     </Router>
   );

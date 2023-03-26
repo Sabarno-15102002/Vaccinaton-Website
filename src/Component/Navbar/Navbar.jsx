@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Navbar.css";
 import Login from "../Login/Login";
 import { getAuth, signOut } from "firebase/auth";
 import { redirect, useNavigate } from "react-router-dom";
@@ -154,7 +155,7 @@ function Navbar() {
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-            > Sign Out
+            > <img className="navbar-dp" src="https://lh3.googleusercontent.com/a/AGNmyxZS_MVhZSnwvFaOBYfBojWD45fIgFvnb-xUUc2j=s96-c" alt="display"/>
             </a>}
             <div
               className="dropdown-menu dropdown-menu-right dp-button"
