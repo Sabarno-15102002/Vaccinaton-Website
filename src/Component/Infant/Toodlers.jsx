@@ -21,12 +21,11 @@ export default function Toodlers() {
           return <a href={"#" + x.time}>{x.time}</a>;
         })}
       </div>
-        <div className="input"><input value={searchField} onChange={handleChange}/></div>
       <div className="content">
         <div className="row">
           <div className="col-lg-6">
             <div>
-              <h2>Infant Vaccination</h2>
+              <h2>Toodlers Vaccination</h2>
               <p>Explore age-wise recommended vaccinations for your child.</p>
               <p>
                 Don’t miss Vaccination so that diseases get locked down. Not
@@ -36,12 +35,14 @@ export default function Toodlers() {
           </div>
           <div className="col-lg-6">
             <img
-              src="https://flo.health/uploads/media/sulu-1000x-inset/01/2221-Vaccination%20at%209%20month.jpg?v=1-0"
+              src="https://d2jx2rerrg6sh3.cloudfront.net/image-handler/ts/20220524014817/ri/750/src/images/news/ImageForNews_714635_16533712960157333.jpg"
               alt=""
             />
           </div>
+          <input className="vaccine-input" placeholder="Search vaccine here.." value={searchField} onChange={handleChange}/>
         </div>
       </div>
+      
       {infant.map((x) => {
         console.log(x.time)
         return (

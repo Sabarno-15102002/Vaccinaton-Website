@@ -1,15 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Account.css";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
+
+
 export default function Account() {
+  const auth = getAuth();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [url, setURL] = useState("");
+   onAuthStateChanged(auth, (user) => {
+    if (user) {
+        setEmail(user.email);
+      setName(user.displayName);
+    setURL(user.photoURL);
+      console.log(email,url);
+    } else {
+      console.log(" User is signed out");
+    }
+  });
+  
   return (
     <section id="account">
         <div className="row">
             <div className="col-lg-8 account-info">
-                <h3>Ananya Pal</h3>
-                <p>ananya2003pal@gmail.com</p>
+                <h3>{name}</h3>
+                <p>{email}</p>
             </div>
             <div className="col-lg-4">
-                <img src="https://lh3.googleusercontent.com/a/AGNmyxZS_MVhZSnwvFaOBYfBojWD45fIgFvnb-xUUc2j=s96-c" alt="account-dp"/>
+                <img src={url} alt="account-dp"/>
             </div>
         </div>
       <table className="vaccine_info">

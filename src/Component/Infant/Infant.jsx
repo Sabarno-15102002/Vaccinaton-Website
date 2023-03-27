@@ -21,7 +21,6 @@ export default function Infant() {
           return <a href={"#" + x.time}>{x.time}</a>;
         })}
       </div>
-        <center><input value={searchField} onChange={handleChange}/></center>
       <div className="content">
         <div className="row">
           <div className="col-lg-6">
@@ -40,6 +39,7 @@ export default function Infant() {
               alt=""
             />
           </div>
+          <input className="vaccine-input" placeholder="Search vaccine here.." value={searchField} onChange={handleChange}/>
         </div>
       </div>
       {infant.map((x) => {
@@ -53,6 +53,7 @@ export default function Infant() {
                 source.includes(target)? <Vaccine
                   diseaseName={y.name}
                   dose={y.Dose}
+                  toBeGiven={y.toBeGiven}
                   ProtectsAgainst={y.protectsAgainst}
                   protection={y.protection}
                 />:null

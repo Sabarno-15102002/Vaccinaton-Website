@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 import "./Navbar.css";
 import Login from "../Login/Login";
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { redirect, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 function Navbar() {
+  const auth = getAuth();
+  const [url, setURL] = useState("");
+   onAuthStateChanged(auth, (user) => {
+    if (user) {
+    setURL(user.photoURL);
+    } else {
+      console.log(" User is signed out");
+    }
+  });
   // const handleLogOut = () => {
   //   if(localStorage.getItem("token")===null)
   //   {
@@ -155,7 +164,7 @@ function Navbar() {
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-            > <img className="navbar-dp" src="https://lh3.googleusercontent.com/a/AGNmyxZS_MVhZSnwvFaOBYfBojWD45fIgFvnb-xUUc2j=s96-c" alt="display"/>
+            > <img className="navbar-dp" src={url} alt="display"/>
             </a>}
             <div
               className="dropdown-menu dropdown-menu-right dp-button"

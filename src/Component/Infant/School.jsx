@@ -36,10 +36,11 @@ export default function School() {
           </div>
           <div className="col-lg-6">
             <img
-              src="https://flo.health/uploads/media/sulu-1000x-inset/01/2221-Vaccination%20at%209%20month.jpg?v=1-0"
+              src="https://www.bu.edu/files/2021/10/covid-vaccine-for-kids-GettyImages-1235627784-1498x1000.jpg"
               alt=""
             />
           </div>
+          <input className="vaccine-input" placeholder="Search vaccine here.." value={searchField} onChange={handleChange}/>
         </div>
       </div>
       {infant.map((x) => {
