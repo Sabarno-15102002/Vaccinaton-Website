@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./Infant.css";
 import Vaccine from "./Vaccine";
 import vaccineList from "../VaccineList";
+import userContext from "../../context/userContext";
 export default function Infant() {
   const infant = vaccineList[0].Sublist;
   console.log(infant);
@@ -9,6 +10,8 @@ export default function Infant() {
   const handleChange = e => {
     setSearchField(e.target.value);
   };
+
+  const user = useContext(userContext);
 
   return (   
     
@@ -51,6 +54,7 @@ export default function Infant() {
         var target=searchField.toLowerCase();
               return (
                 source.includes(target)? <Vaccine
+                  user={user.state}
                   diseaseName={y.name}
                   dose={y.Dose}
                   toBeGiven={y.toBeGiven}

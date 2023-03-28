@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import About from "./Component/About/About";
 import Chart from "./Component/Chart/Chart";
@@ -10,7 +10,24 @@ import Infant from "./Component/Infant/Infant";
 import Toodlers from "./Component/Infant/Toodlers";
 import School from "./Component/Infant/School";
 import Account from "./Component/Account/Account";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import userContext from "./context/userContext";
 function App() {
+  const user = useContext(userContext);
+
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (currUser) => {
+      if (currUser) {
+        // console.log(currUser);
+        user.setState(currUser);
+      } else {
+        // console.log("No User");
+        user.setState(null);
+      }
+    });
+  }, [])
+  
   function HomePage()
   {
     return <>
