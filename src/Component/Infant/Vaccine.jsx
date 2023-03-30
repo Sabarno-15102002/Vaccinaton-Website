@@ -1,13 +1,13 @@
 import React from "react";
-import { app } from "../Login/firebaseConfig";
+//import { app } from "../Login/firebaseConfig";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { db } from "../Login/firebaseConfig.js"
 import Swal from 'sweetalert2';
 
 export default function Vaccine(props)
 {
 
-    // Initialize Cloud Firestore and get a reference to the service
-    const db = getFirestore(app);
+    
 
     const handleClick = async () => {
         document.getElementById("vaccine_date").setAttribute("min", new Date().toISOString().split("T")[0]);

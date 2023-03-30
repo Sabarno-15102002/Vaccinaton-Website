@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+
 import "./Account.css";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { db } from "../Login/firebaseConfig.js";
 
+import {
+  collection,
+  getDocs,
+ // deleteDoc,
+//  doc,
+} from "firebase/firestore";
 
-
-export default function Account() {
+export default function Account(props) {
+  
+  
+  // const findUserId=user.state.uid;
+   console.log(props.user);
   const auth = getAuth();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -14,11 +25,23 @@ export default function Account() {
         setEmail(user.email);
       setName(user.displayName);
     setURL(user.photoURL);
-      console.log(email,url);
+     // console.log(email,url);
     } else {
       console.log(" User is signed out");
     }
   });
+  
+  const [users, setUsers] = useState([]);
+  const usersCollectionRef = collection(db, "users");
+
+  useEffect(() => {
+    const getUsers = async () => {
+      const data = await getDocs(usersCollectionRef);
+      setUsers(data.docs.map((doc) => ({ ...doc.data()})));
+    };
+
+    getUsers();
+  }, );
   
   return (
     <section id="account">
@@ -39,14 +62,19 @@ export default function Account() {
           </tr>
         </thead>
         <tbody id="VaccineBody">
-        <tr>
-              <td>Name</td>
-              <td>Vaccine</td>
-            </tr>
-            <tr>
-              <td>Name</td>
-              <td>Vaccine</td>
-            </tr>
+          {
+            users.map((u)=>{
+               if(u.user===props.user.uid)
+              {
+                return (
+                  <tr>
+                    <td>{u.vaccine}</td>
+                    <td>{u.date}</td>
+                  </tr>
+              )}
+              else return null;
+            })
+          } 
         </tbody>
         
       </table>

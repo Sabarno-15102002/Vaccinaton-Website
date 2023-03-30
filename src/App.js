@@ -26,7 +26,7 @@ function App() {
         user.setState(null);
       }
     });
-  }, [])
+  }, )
   
   function HomePage()
   {
@@ -46,7 +46,7 @@ function App() {
         <Route path="/infant" element={<Infant/>} />
         <Route path="/toodlers" element={<Toodlers/>} />
         <Route path="/School going kids" element={<School/>} />
-        <Route path="/account" element={<Account/>} />
+        <Route path="/account" element={<Account user={user.state}/>} />
       </Routes>
     </Router>
   );
