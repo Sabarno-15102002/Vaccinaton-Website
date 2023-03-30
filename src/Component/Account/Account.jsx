@@ -72,7 +72,7 @@ console.log(currentDate);
         <tbody id="VaccineBody">
           {
             users.map((u)=>{
-               if((u.user===props.user.uid) && currentDate>=u.date)
+               if((u.user===props.user.uid) && currentDate<=u.date)
               {
                 return (
                   <tr>
