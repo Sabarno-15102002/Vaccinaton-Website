@@ -1,15 +1,13 @@
 import React from "react";
 import "./Contact.css";
-export default function Contact ()
-{
-    return <section id="contact" class="contact">
+export default function Contact() {
+  return <section id="contact" class="contact">
     <div class="container">
 
       <div class="section-title">
         <h2>Contact</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-          consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-          in iste officiis commodi quidem hic quas.</p>
+        <p>Contact Us For personal medical advise, Please consult your doctor.
+          For more information Please contact us at:</p>
       </div>
 
       <div class="row">
@@ -36,7 +34,7 @@ export default function Contact ()
 
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14744.833134351007!2d88.36285572909694!3d22.49636726355133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0271233b03a041%3A0x3ab416d1f7084129!2sElectrical%20Engineering%20Department%2C%20Jadavpur%20University!5e0!3m2!1sen!2sin!4v1676910175761!5m2!1sen!2sin"
-              frameBorder="0" style={{border:0, width: "100%", height: "290px"}} allowfullscreen></iframe>
+              frameBorder="0" style={{ border: 0, width: "100%", height: "290px" }} allowfullscreen></iframe>
           </div>
 
         </div>
@@ -46,16 +44,16 @@ export default function Contact ()
             <div class="row">
               <div class="form-group col-md-6">
                 <label for="name">Your Name</label>
-                <input type="text" name="name" class="form-control" id="name" required/>
+                <input type="text" name="name" class="form-control" id="name" required />
               </div>
               <div class="form-group col-md-6">
                 <label for="name">Your Email</label>
-                <input type="email" class="form-control" name="email" id="email" required/>
+                <input type="email" class="form-control" name="email" id="email" required />
               </div>
             </div>
             <div class="form-group">
               <label for="name">Subject</label>
-              <input type="text" class="form-control" name="subject" id="subject" required/>
+              <input type="text" class="form-control" name="subject" id="subject" required />
             </div>
             <div class="form-group">
               <label for="name">Message</label>

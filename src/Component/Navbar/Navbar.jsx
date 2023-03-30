@@ -2,74 +2,22 @@ import React, { useState } from "react";
 import "./Navbar.css";
 import Login from "../Login/Login";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import { redirect, useNavigate } from "react-router-dom";
+// import { redirect, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 function Navbar() {
   const auth = getAuth();
   const [url, setURL] = useState("");
-   onAuthStateChanged(auth, (user) => {
+  onAuthStateChanged(auth, (user) => {
     if (user) {
-    setURL(user.photoURL);
+      setURL(user.photoURL);
     } else {
       console.log(" User is signed out");
     }
   });
-  // const handleLogOut = () => {
-  //   if(localStorage.getItem("token")===null)
-  //   {
-  //     Swal.fire({
-  //       title: 'You are already logged out',
-  //       showConfirmButton: true,
-  //       confirmButtonColor: "#db334f"
-  //     })
-  //   }
-  //   else
-  //   {
-  //     const swalWithBootstrapButtons = Swal.mixin({
-  //       customClass: {
-  //         confirmButton: 'btn btn-success',
-  //         cancelButton: 'btn btn-danger'
-  //       },
-  //       buttonsStyling: false
-  //     })
-
-  //     swalWithBootstrapButtons.fire({
-  //       title: 'Are you sure?',
-  //       text: "Do you really want to sign out? ",
-  //       icon: 'warning',
-  //       showCancelButton: true,
-  //       confirmButtonText: 'Yes',
-  //       cancelButtonText: 'No',
-  //       reverseButtons: true
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         Swal.fire({
-  //           icon: 'success',
-  //           title: 'Succesfully Logged Out',
-  //           text: 'Visit our site again',
-  //           showConfirmButton: true,
-  //           confirmButtonColor: "#db334f"
-  //         })
-  //         localStorage.removeItem("token");
-  //         window.location = "/";
-  //       } else if (
-  //         /* Read more about handling dismissals below */
-  //         result.dismiss === Swal.DismissReason.cancel
-  //       ) {
-  //         Swal.fire({
-  //           icon: 'success',
-  //           title: 'Cancelled',
-  //           showConfirmButton: true,
-  //           confirmButtonColor: "#db334f"
-  //         })
-  //       }
-  //     })
-  //   }
-  // }
   const authenticated = localStorage.getItem('authenticated');
   const [authenticate, setAuthenticate] = useState(authenticated);
   console.log(authenticate);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const handleLogin = () => {
     Login();
   }
@@ -114,8 +62,8 @@ function Navbar() {
   return (
     <nav class="navbar navbarHeight navbar-expand-lg navbar-light bg-light navbar-adjust-custom">
       <a className="navbar-brand" href="/">
-        <img src="images/icon.png" alt="icon" className="icon" />
-        <span className="iconText">Vaccine</span>
+        <img src="Image/syringe.png" alt="icon" className="icon navbar-dp" />
+        <span className="iconText">freeVaccineCamp</span>
       </a>
       <button
         className="navbar-toggler ml-auto"
@@ -164,7 +112,7 @@ function Navbar() {
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-            > <img className="navbar-dp" src={url} alt="display"/>
+            > <img className="navbar-dp" src={url} alt="display" />
             </a>}
             <div
               className="dropdown-menu dropdown-menu-right dp-button"
