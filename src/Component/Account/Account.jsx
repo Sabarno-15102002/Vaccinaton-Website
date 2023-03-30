@@ -43,6 +43,14 @@ export default function Account(props) {
     getUsers();
   }, );
   
+  var fromDate=new Date();
+  var year = fromDate.getFullYear().toString();
+var month = fromDate.getMonth() < 10 ? ('0'+ (fromDate.getMonth()+1).toString()).toString() : (fromDate.getMonth()+1).toString();
+
+var date =  fromDate.getDate() < 10 ? ('0'+ fromDate.getDate()).toString(): (fromDate.getDate()).toString();
+var currentDate=year+"-"+month+"-"+date;
+console.log(currentDate);
+  
   return (
     <section id="account">
         <div className="row">
@@ -64,7 +72,7 @@ export default function Account(props) {
         <tbody id="VaccineBody">
           {
             users.map((u)=>{
-               if(u.user===props.user.uid)
+               if((u.user===props.user.uid) && currentDate>=u.date)
               {
                 return (
                   <tr>
