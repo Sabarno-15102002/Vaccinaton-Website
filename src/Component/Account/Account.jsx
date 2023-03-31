@@ -1,5 +1,4 @@
 import React, { useState,useEffect } from "react";
-import Swal from 'sweetalert2';
 import "./Account.css";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { db } from "../Login/firebaseConfig.js";
@@ -10,10 +9,13 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
+import Swal from 'sweetalert2';
 
 export default function Account(props) {
   
-   //console.log(props.user);
+  
+  // const findUserId=user.state.uid;
+   console.log(props.user);
   const auth = getAuth();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -23,7 +25,7 @@ export default function Account(props) {
         setEmail(user.email);
       setName(user.displayName);
     setURL(user.photoURL);
-      console.log(email,url);
+     // console.log(email,url);
     } else {
       console.log(" User is signed out");
     }
@@ -35,25 +37,25 @@ export default function Account(props) {
   useEffect(() => {
     const getUsers = async () => {
       const data = await getDocs(usersCollectionRef);
-      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id})));
+      setUsers(data.docs.map((doc) => ({ ...doc.data(),id:doc.id})));
     };
 
     getUsers();
-  }, );
-
+  }, [usersCollectionRef]);
+  
   const deleteUser = async (id,vaccine) => {
     const userDoc = doc(db, "users", id);
     await deleteDoc(userDoc);
     Swal.fire(
-      'Good job!',
+      'Alas!',
       `You have successfully cancelled booking for ${vaccine}` ,
       'success'
     )
   };
-  
-  var currentDate=new Date().toISOString().split("T")[0];
 
+var currentDate=new Date().toISOString().split("T")[0];
 console.log(currentDate);
+  
   return (
     <section id="account">
         <div className="row">
@@ -81,7 +83,7 @@ console.log(currentDate);
                   <tr>
                     <td>{u.vaccine}</td>
                     <td>{u.date}</td>
-                    <td><button
+                    <td><button className="btn btn-dark"
               onClick={() => {
                 deleteUser(u.id,u.vaccine);
               }}
@@ -100,4 +102,3 @@ console.log(currentDate);
     </section>
   );
 }
-
