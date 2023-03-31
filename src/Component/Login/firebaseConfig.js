@@ -18,7 +18,15 @@ const firebaseConfig = {
     measurementId: "G-ZJNB80L7XF"
 };
 
-
+// const firebaseConfig = {
+//     apiKey: "AIzaSyA5Wt_bj0L2kdplfNHrrclccVnJKBI9pkc",
+//     authDomain: "freevaccinecamp.firebaseapp.com",
+//     projectId: "freevaccinecamp",
+//     storageBucket: "freevaccinecamp.appspot.com",
+//     messagingSenderId: "838621566946",
+//     appId: "1:838621566946:web:fd0c5ff0787964636ecbbb",
+//     measurementId: "G-GEMH1LH0H9"
+//   };
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const analytics = getAnalytics(app);
