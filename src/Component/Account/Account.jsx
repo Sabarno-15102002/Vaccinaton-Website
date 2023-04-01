@@ -41,11 +41,14 @@ export default function Account(props) {
     };
 
     getUsers();
-  }, [usersCollectionRef]);
+    // eslint-disable-next-line
+  }, []);
   
   const deleteUser = async (id,vaccine) => {
     const userDoc = doc(db, "users", id);
     await deleteDoc(userDoc);
+    const data = await getDocs(usersCollectionRef);
+    setUsers(data.docs.map((doc) => ({ ...doc.data(),id:doc.id})));
     Swal.fire(
       'Alas!',
       `You have successfully cancelled booking for ${vaccine}` ,
